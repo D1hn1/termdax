@@ -1,2 +1,4 @@
-```html<h1>Termdax</h1>```
+```html
+<h1>Termdax</h1>
+```
 A c++ library to create shapes in the console
