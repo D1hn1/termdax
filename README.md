@@ -5,9 +5,7 @@
 A c++ library to create shapes in the console
 ```
 <hr />
-```
-Example.cpp file
-```
+
 ```cpp
 #include <iostream>
 #include "src/termdax.cpp"
