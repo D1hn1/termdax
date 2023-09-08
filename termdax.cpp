@@ -2,6 +2,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <vector>
+#include <string.h>
 
 struct posList
 {
@@ -62,24 +63,42 @@ struct Termdax
         void Draw ()
         {
             bool itemPrinted = false;
+            int iterations = 0;
             for ( int y = 0; y < windowSizeY; y++ ) {
                 for ( int x = 0; x < windowSizeX; x++ ) {
                     for ( posList element : array ) {
                         if ( element.type == 1 ) {
-                                int width = element.cord_x + element._width;
-                                int height = element.cord_y + element._height;
-                                if ( x >= element.cord_x && y >= element.cord_y ) {
-                                    if ( x <= ( width - 1 ) && y <= ( height - 1 ) ) {
-                                        std::cout << element._char;
-                                        itemPrinted = true;
-                                    } else {
-                                        itemPrinted = false;
-                                    };
+                            int width = element.cord_x + element._width;
+                            int height = element.cord_y + element._height;
+                            if ( x >= element.cord_x && y >= element.cord_y ) {
+                                if ( x <= ( width - 1 ) && y <= ( height - 1 ) ) {
+                                    std::cout << element._char;
+                                    itemPrinted = true;
+                                } else {
+                                    itemPrinted = false;
                                 };
-                        };                    
+                            };
+                        } else if ( element.type == 2 ) {
+                            if ( x >= element.cord_x && y >= element.cord_y ) {
+                                if ( iterations != strlen(element.text) ) {
+                                    std::cout << element.text[iterations];
+                                    iterations++;
+                                    itemPrinted = true;
+                                } else {
+                                    itemPrinted = false;
+                                };
+                            };
+                         };
                     };
                     if ( !itemPrinted ) { std::cout << " "; };
                 };
+            };
+        }
+
+        void destroyAll()
+        {
+            for ( auto element : array ) {
+                array.pop_back();
             };
         }
 
@@ -87,5 +106,10 @@ struct Termdax
         {
             array.push_back({1, x_rec, y_rec, width, height, fill, NULL});
         }
- 
+
+        void createText ( int x_pos, int y_pos, const char* text )
+        {
+            array.push_back({2, x_pos, y_pos, NULL, NULL, NULL, text});
+        }
+
 };
