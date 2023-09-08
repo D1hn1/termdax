@@ -1,10 +1,10 @@
 ```html
 <h1>Termdax</h1>
 ```
-```
+```txt
 A c++ library to create shapes in the console
 ```
-<hr>
+<hr />
 ```
 Example.cpp file
 ```
