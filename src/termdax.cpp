@@ -51,7 +51,7 @@ struct Termdax
             };
         }
 
-        char getKeyPressed ( )
+        char getKeyPressed ()
         {
             char keyPressed;
             system("stty raw");
