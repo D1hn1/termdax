@@ -78,13 +78,15 @@ struct Termdax
                                     itemPrinted = false;
                                 };
                             };
+
                         } else if ( element.type == 2 ) {
-                            if ( x >= element.cord_x && y >= element.cord_y ) {
+                            if ( x >= element.cord_x && y >= element.cord_y && x <=  ( strlen(element.text) + element.cord_x ) && y <= element.cord_y) {
                                 if ( iterations != strlen(element.text) ) {
                                     std::cout << element.text[iterations];
                                     iterations++;
                                     itemPrinted = true;
                                 } else {
+                                    iterations = 0;
                                     itemPrinted = false;
                                 };
                             };
