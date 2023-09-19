@@ -99,9 +99,7 @@ struct Termdax
 
         void destroyAll()
         {
-            for ( auto element : array ) {
-                array.pop_back();
-            };
+			array = {};
         }
 
         void createRectangle ( int x_rec, int y_rec, int width, int height, char fill )
